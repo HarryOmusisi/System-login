@@ -9,7 +9,7 @@
     <title>Registration Page</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body style="background-color: #95a5a6">
+<body style="background: #34495e">
 <div id="main-wrapper">
     <center> <h2>Registration Form</h2>
         <img src="images/profile.png"class="avatar">
@@ -27,7 +27,7 @@
             <input name="cpassword" type="password"class="inputValues"placeholder="Confirm password"required/><br>
 
             <input name="submit_btn" type="submit"id="signup-btn"value="Sign Up"/><br>
-            <input type="button" id="back-btn"value="<<Back "/><br>
+           <a href="index.php"><input type="button" id="back-btn"value="<<Back "/><br></a>
         </center>
 </form>
 
@@ -43,20 +43,23 @@
             {
                 $query="select * from users WHERE username='$username'";
                 $query_run=mysqli_query($conn,$query);
-            }
-            if (mysqli_num_rows($query_run)>0)
-            {
+
+            if (mysqli_num_rows($query_run)>0) {
                 echo '<script type="text/javascript">alert("user already exists....")</script>';
-            }
-            {
-                $query="insert into users values ('$username','$password')";
-                $query_run=mysqli_query($conn,$query);
-                if ($query_run){
-                    echo '<script type="text/javascript">alert("User registered....Go to login page")</script>';
-                }else
-                {
-                    echo '<script type="text/javascript">alert("error!")</script>';
                 }
+            else{
+
+                    $query = "insert into users values ('$username','$password')";
+                    $query_run = mysqli_query($conn, $query);
+                    if ($query_run) {
+                        echo '<script type="text/javascript">alert("User registered....Go to login page")</script>';
+                    } else {
+                        echo '<script type="text/javascript">alert("error!")</script>';
+                    }
+                }
+            }else
+            {
+                echo '<script type="text/javascript">alert("Password does not much")</script>';
             }
 
         }

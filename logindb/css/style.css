@@ -1,7 +1,7 @@
 #main-wrapper{
     width: 500px;
     margin: 0 auto;
-    background: white;
+    background: linear-gradient(rgba(0,0,50,0.5),rgba(0,0,50,0.5)),url("images/nice.jpg");
     padding: 5px;
     border:2px solid darkblue ;
 }
